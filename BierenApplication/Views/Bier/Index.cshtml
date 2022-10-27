@@ -1,0 +1,17 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+}
+
+@model List<Bier>
+
+
+<h1>Alle bieren</h1>
+
+    @foreach (var bier in Model)
+    {
+        <p>@bier.Id. @bier.Naam (@bier.Alcohol %)</p>
+    }
+
+
+
