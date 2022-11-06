@@ -1,0 +1,10 @@
+﻿@model Bier
+@{
+    ViewData["Title"] = "Verwijderen";
+}
+
+<h2>@Model?.Naam verwijderen?</h2>
+<form method="post" action="~/bier/delete/@Model?.Id">
+    <input type="submit" value="Delete"/>
+</form>
+

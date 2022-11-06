@@ -8,10 +8,15 @@
 
 <h1>Alle bieren</h1>
 
+@if (Model != null)
+{
     @foreach (var bier in Model)
     {
-        <p>@bier.Id. @bier.Naam (@bier.Alcohol %)</p>
+        var url = "bier/verwijderen/" + bier.Id;
+        <p>@Html.DisplayFor(m=>bier.Id) @bier.Naam @Html.DisplayFor(m=>bier.Alcohol)
+        <a href="~/@url"><img src="~/images/delete.png" alt="verwijderen"/></a></p>
     }
+}
 
 
 

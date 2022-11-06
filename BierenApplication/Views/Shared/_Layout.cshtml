@@ -10,9 +10,9 @@
 </head>
 <body>
     <header>
-        <nav>
+        <div class="container">
             <img src="~/images/biertempel.png" alt="logo" />
-        </nav>
+        </div>
 
     </header>
     <div class="container">
@@ -23,7 +23,8 @@
 
     <footer class="border-top footer text-muted">
         <div class="container">
-            &copy; 2022 - De Biertempem - Hoppestraat 103 - 3360 Bierbeek - tel. 016123456 - email: info@biertempel.be - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+            <vc:mijn-footer footer-tekst="- De Biertempel - Hoppestraat 103 - 3360 Bierbeek - tel. 016123456 - email: info@biertempel.be - "></vc:mijn-footer>
+            @*&copy; 2022 - De Biertempem - Hoppestraat 103 - 3360 Bierbeek - tel. 016123456 - email: info@biertempel.be - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>*@
         </div>
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>

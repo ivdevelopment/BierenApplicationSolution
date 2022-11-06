@@ -15,4 +15,22 @@ html {
 
 body {
   margin-bottom: 60px;
+  background-color: rgb(7, 0, 0, 0.92);
+  color: white;
+}
+
+.groen {
+    color: green;
+}
+
+.geel {
+    color: yellow;
+}
+
+.oranje {
+    color: orange;
+}
+
+.rood {
+    color: red;
 }
