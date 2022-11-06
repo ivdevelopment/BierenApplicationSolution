@@ -30,7 +30,7 @@ namespace BierenApplication.Controllers
             var bier = _bierService.Read(Id);
             this.TempData["bier"] = JsonConvert.SerializeObject(bier);
             _bierService.Delete(Id);
-            return Redirect("~/bier/verwijderd");
+            return RedirectToAction(nameof(Verwijderd));
         }
         
         public IActionResult Verwijderd()
