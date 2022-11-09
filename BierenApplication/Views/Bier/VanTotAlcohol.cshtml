@@ -1,0 +1,27 @@
+﻿@model VanTotAlcoholViewModel
+@{
+    ViewData["Title"] = "VanTotAlcohol";
+}
+
+<h2>Alcohol percentages tussen twee grenzen</h2>
+<form asp-action="VanTotAlcoholResultaat" method="get">
+    <label asp-for="VanAlcohol"></label>
+    <span asp-validation-for="VanAlcohol">*</span>
+    <input asp-for="VanAlcohol" />
+    <label asp-for="TotAlcohol"></label>
+    <span asp-validation-for="TotAlcohol">*</span>
+    <input asp-for="TotAlcohol" />
+    <input type="submit" value="Zoeken" />
+    <div asp-validation-summary="All">Er zijn validatiefouten</div>
+</form>
+
+@if (Model?.Bieren != null)
+{
+        <ul>
+        @foreach (var bier in Model.Bieren)
+        {
+            <li>@bier.Naam @bier.Alcohol @bier.Prijs</li>
+        }
+        </ul>
+}
+

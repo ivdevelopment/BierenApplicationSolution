@@ -41,5 +41,35 @@ namespace BierenApplication.Controllers
             else
                 return RedirectToAction("index");
         }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Prijsverhoging()
+        {
+           _bierService.Prijsverhoging(5m);
+            return RedirectToAction(nameof(Index), _bierService.FindAll());
+        }
+
+        [HttpGet]
+        public IActionResult VanTotAlcohol()
+        {
+            var vanTotAlcoholViewModel = new VanTotAlcoholViewModel();
+            return View(vanTotAlcoholViewModel);
+        }
+
+        [HttpGet]
+        public IActionResult VanTotAlcoholResultaat(VanTotAlcoholViewModel vanTotAlcoholViewModel)
+        {
+            if (this.ModelState.IsValid)
+            {
+                var lijst = _bierService.VanTotAlcohol(vanTotAlcoholViewModel.VanAlcohol, vanTotAlcoholViewModel.TotAlcohol);
+                if (lijst.Count <= 3)
+                    // geen extra probleem
+                    vanTotAlcoholViewModel.Bieren = lijst;
+                else
+                    // wel een probleem
+                    this.ModelState.AddModelError("", "Te veel resultaten");
+            }
+            return View(nameof(VanTotAlcohol), vanTotAlcoholViewModel);
+        }
     }
 }

@@ -13,9 +13,12 @@
     @foreach (var bier in Model)
     {
         var url = "bier/verwijderen/" + bier.Id;
-        <p>@Html.DisplayFor(m=>bier.Id) @bier.Naam @Html.DisplayFor(m=>bier.Alcohol)
+                <p>@Html.DisplayFor(m=>bier.Id) @bier.Naam @Html.DisplayFor(m=>bier.Alcohol) @Html.DisplayFor(m=>bier.Prijs)
                 <a asp-action="Verwijderen" asp-route-id="@bier.Id"><img src="~/images/delete.png" alt="verwijderen"/></a></p>
     }
+    <form asp-action="Prijsverhoging" method="post">
+    <input type="submit" value="Verhoog prijzen" />
+    </form>
 }
 
 
