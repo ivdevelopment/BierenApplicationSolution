@@ -2,6 +2,7 @@
 using BierenApplication.Services;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
+using System;
 
 namespace BierenApplication.Controllers
 {
@@ -70,6 +71,27 @@ namespace BierenApplication.Controllers
                     this.ModelState.AddModelError("", "Te veel resultaten");
             }
             return View(nameof(VanTotAlcohol), vanTotAlcoholViewModel);
+        }
+
+        [HttpGet]
+        public IActionResult Toevoegen()
+        {
+            var bier = new Bier();
+            return View(bier);
+        }
+
+        [HttpPost]
+        public IActionResult Toevoegen(Bier b)
+        {
+            if (this.ModelState.IsValid)
+            {
+                _bierService.Add(b);
+                return RedirectToAction(nameof(Index));
+            }
+            else
+            {
+                return View(b);
+            }
         }
     }
 }

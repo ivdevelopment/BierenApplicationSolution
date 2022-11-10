@@ -10,15 +10,37 @@
 
 @if (Model != null)
 {
-    @foreach (var bier in Model)
-    {
-        var url = "bier/verwijderen/" + bier.Id;
-                <p>@Html.DisplayFor(m=>bier.Id) @bier.Naam @Html.DisplayFor(m=>bier.Alcohol) @Html.DisplayFor(m=>bier.Prijs)
-                <a asp-action="Verwijderen" asp-route-id="@bier.Id"><img src="~/images/delete.png" alt="verwijderen"/></a></p>
-    }
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Naam</th>
+                    <th>Alcohol</th>
+                    <th>Prijs</th>
+                    <th>Verwijderen</th>
+                </tr>
+            </thead>
+            <tbody>
+            @foreach (var bier in Model)
+            {
+                var url = "bier/verwijderen/" + bier.Id;
+                        <tr>
+                            <td>@bier.Id</td>
+                            <td>@bier.Naam</td>
+                            <td>@Html.DisplayFor(m=>bier.Alcohol)</td>
+                            <td>@Html.DisplayFor(m=>bier.Prijs)</td>
+                            <td>
+                                <a asp-action="Verwijderen" asp-route-id="@bier.Id"><img src="~/images/delete.png" alt="verwijderen"/></a>
+                            </td>
+                        </tr>
+            }
+            </tbody>
+        </table>
+
     <form asp-action="Prijsverhoging" method="post">
-    <input type="submit" value="Verhoog prijzen" />
+    <input type="submit" value="Verhoog prijzen" class="btn btn-secondary"/>
     </form>
+        <a asp-action="Toevoegen" class="btn btn-primary">Bier toevoegen</a>
 }
 
 

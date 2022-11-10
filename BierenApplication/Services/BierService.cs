@@ -77,5 +77,11 @@ namespace BierenApplication.Services
                     orderby bier.Alcohol
                     select bier).ToList();
         }
+
+        public void Add(Bier b)
+        {
+            b.Id = bieren.Keys.Max() + 1;
+            bieren.Add(b.Id, b);
+        }
     }
 }
